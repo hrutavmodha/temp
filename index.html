@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TaskFlow | Modern Task Manager</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-wrapper">
+    <header class="app-header">
+      <div class="brand">
+        <div class="brand-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 11l3 3L22 4"></path>
+            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+          </svg>
+        </div>
+        <div>
+          <h1>TaskFlow</h1>
+          <p class="tagline">Manage your daily goals and productivity</p>
+        </div>
+      </div>
+      <div class="task-stats-badge" id="taskStatsBadge">
+        <span id="activeCount">0</span> tasks remaining
+      </div>
+    </header>
+
+    <main class="app-card">
+      <form class="task-form" id="taskForm">
+        <div class="input-row">
+          <input 
+            type="text" 
+            id="taskInput" 
+            class="task-input" 
+            placeholder="What needs to be done?" 
+            autocomplete="off" 
+            required
+          >
+          <div class="form-controls">
+            <select id="prioritySelect" class="priority-select" aria-label="Task Priority">
+              <option value="medium">Medium Priority</option>
+              <option value="high">High Priority</option>
+              <option value="low">Low Priority</option>
+            </select>
+            <input type="date" id="dateInput" class="date-input" aria-label="Due Date">
+            <button type="submit" class="btn btn-add" id="addBtn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+              <span>Add Task</span>
+            </button>
+          </div>
+        </div>
+      </form>
+
+      <div class="controls-bar">
+        <div class="filter-tabs">
+          <button class="filter-btn active" data-filter="all">All <span class="count-pill" id="countAll">0</span></button>
+          <button class="filter-btn" data-filter="active">Active <span class="count-pill" id="countActive">0</span></button>
+          <button class="filter-btn" data-filter="completed">Completed <span class="count-pill" id="countCompleted">0</span></button>
+        </div>
+        <button class="btn-clear" id="clearCompletedBtn" title="Remove all completed tasks">
+          Clear Completed
+        </button>
+      </div>
+
+      <div class="progress-container">
+        <div class="progress-bar-bg">
+          <div class="progress-bar-fill" id="progressBar"></div>
+        </div>
+      </div>
+
+      <ul class="task-list" id="taskList"></ul>
+
+      <div class="empty-state" id="emptyState" style="display: none;">
+        <div class="empty-icon">&#10024;</div>
+        <h3>No tasks found</h3>
+        <p>You're all caught up! Add a new task to get started.</p>
+      </div>
+    </main>
+
+    <footer class="app-footer">
+      <p>&copy; 2026 TaskFlow &bull; Saved locally in your browser</p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
